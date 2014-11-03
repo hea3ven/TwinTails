@@ -25,7 +25,7 @@ public class ModelTwinTails extends ModelBiped {
 
         Minecraft.getMinecraft().getTextureManager()
                 .bindTexture(
-                        new ResourceLocation("twintails:textures/twintails_normal.png"));
+                        new ResourceLocation("twintails:textures/models/twintails_normal.png"));
 
         GL11.glPushMatrix();
         if (rotateAngleY != 0.0F)
