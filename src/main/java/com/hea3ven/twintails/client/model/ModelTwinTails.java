@@ -12,27 +12,25 @@ import net.minecraftforge.client.model.IModelCustom;
 public class ModelTwinTails extends ModelBiped {
 
     private IModelCustom model;
+    private ResourceLocation modelTexture;
 
-    public ModelTwinTails() {
-        model = AdvancedModelLoader.loadModel(new ResourceLocation("twintails:models/twintails_normal.obj"));
+    public ModelTwinTails(String subType) {
+        model = AdvancedModelLoader.loadModel(
+                new ResourceLocation("twintails:models/twintails_" + subType + ".obj"));
+        modelTexture = new ResourceLocation("twintails:textures/models/twintails_" + subType + ".png");
     }
 
     @Override
-    public void render(Entity entity, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_) {
+    public void render(Entity entity, float p_78088_2_, float p_78088_3_, float p_78088_4_, float headAngleY, float headAngleX, float p_78088_7_) {
 
-        float rotateAngleY = p_78088_5_ / (180F / (float) Math.PI);
-        float rotateAngleX = p_78088_6_ / (180F / (float) Math.PI);
-
-        Minecraft.getMinecraft().getTextureManager()
-                .bindTexture(
-                        new ResourceLocation("twintails:textures/models/twintails_normal.png"));
+        Minecraft.getMinecraft().getTextureManager().bindTexture(modelTexture);
 
         GL11.glPushMatrix();
-        if (rotateAngleY != 0.0F)
-            GL11.glRotatef(rotateAngleY * (180F / (float) Math.PI), 0.0F, 1.0F, 0.0F);
+        if (headAngleY != 0.0F)
+            GL11.glRotatef(headAngleY, 0.0F, 1.0F, 0.0F);
 
-        if (rotateAngleX != 0.0F)
-            GL11.glRotatef(rotateAngleX * (180F / (float) Math.PI), 1.0F, 0.0F, 0.0F);
+        if (headAngleX != 0.0F)
+            GL11.glRotatef(headAngleX, 1.0F, 0.0F, 0.0F);
 
         GL11.glScalef(-1.0F, -1.0F, 1.0F);
 
