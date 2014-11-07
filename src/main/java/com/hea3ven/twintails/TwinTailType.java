@@ -32,7 +32,7 @@ public class TwinTailType {
     }
 
     public void registerIcon(IIconRegister iconRegister) {
-        icon = iconRegister.registerIcon("twintails:twintail_" + name);
+        icon = iconRegister.registerIcon("twintails:hairband_" + name);
     }
 
     public IIcon getIcon() {

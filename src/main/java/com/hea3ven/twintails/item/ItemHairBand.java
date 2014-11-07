@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemHairBand extends ItemArmor {
 
-    public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CLOTH;
+    public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
             new TwinTailType(0, "normal"),
