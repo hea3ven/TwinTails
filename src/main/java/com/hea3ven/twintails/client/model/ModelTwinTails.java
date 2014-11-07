@@ -34,6 +34,9 @@ public class ModelTwinTails extends ModelBiped {
 
         GL11.glScalef(-1.0F, -1.0F, 1.0F);
 
+        if (entity.isSneaking())
+            GL11.glTranslatef(0.0f, -0.0625f, 0.0f);
+
         model.renderAll();
 
         GL11.glPopMatrix();
