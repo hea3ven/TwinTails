@@ -25,8 +25,8 @@ public class ItemHairBand extends ItemArmor {
     public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
-            new TwinTailType(0, "normal"),
-            new TwinTailType(0, "red")
+            new TwinTailType(0, "normal", new Potion[] {}),
+            new TwinTailType(0, "red", new Potion[] {Potion.moveSpeed, Potion.jump})
     };
 
     public ItemHairBand() {
@@ -48,11 +48,16 @@ public class ItemHairBand extends ItemArmor {
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         if (!world.isRemote) {
-            PotionEffect effect = player
-                    .getActivePotionEffect(Potion.moveSpeed);
+            refreshPotionsEffects(player,
+                    twinTailTypes[getTypeOffset(itemStack)].getPotions());
+        }
+    }
+
+    private void refreshPotionsEffects(EntityPlayer player, Potion[] potions) {
+        for (Potion potion : potions) {
+            PotionEffect effect = player.getActivePotionEffect(potion);
             if (effect == null || effect.getDuration() < 10)
-                player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,
-                        80, 2));
+                player.addPotionEffect(new PotionEffect(potion.id, 80, 1));
         }
     }
 
