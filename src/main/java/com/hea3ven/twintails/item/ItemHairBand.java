@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -14,10 +15,14 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import com.hea3ven.twintails.TwinTailType;
 import com.hea3ven.twintails.TwinTailsMod;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -100,5 +105,16 @@ public class ItemHairBand extends ItemArmor {
         for (TwinTailType twinTailType : twinTailTypes) {
             itemList.add(new ItemStack(item, 1, twinTailType.getOrdinal()));
         }
+    }
+
+    public void AddRecipes() {
+        ItemStack normalHairTie = new ItemStack(this, 1, 0);
+        ItemStack redHairTie = new ItemStack(this, 1, 1);
+        ItemStack anyHairTie = new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
+
+        GameRegistry.addRecipe(new ShapedOreRecipe(normalHairTie, " s ", "sbs", " s ", 's', Items.string, 'b', "slimeball"));
+
+        GameRegistry.addRecipe(new ShapelessOreRecipe(normalHairTie, anyHairTie, "dyeWhite"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(redHairTie, anyHairTie, "dyeRed"));
     }
 }

@@ -38,6 +38,7 @@ public class TwinTailsMod {
 
         hairBand = new ItemHairBand();
         GameRegistry.registerItem(hairBand, "hairBand");
+        hairBand.AddRecipes();
     }
 
     @EventHandler
