@@ -16,6 +16,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.hea3ven.twintails.TwinTailType;
+import com.hea3ven.twintails.TwinTailsMod;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -47,7 +48,7 @@ public class ItemHairBand extends ItemArmor {
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (!world.isRemote) {
+        if (!world.isRemote && TwinTailsMod.config.twinTailsEffects) {
             refreshPotionsEffects(player,
                     twinTailTypes[getTypeOffset(itemStack)].getPotions());
         }
