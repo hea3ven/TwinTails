@@ -32,7 +32,8 @@ public class ItemHairBand extends ItemArmor {
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
             new TwinTailType(0, "normal", new Potion[] {}),
-            new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump})
+            new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}),
+            new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost})
     };
 
     public ItemHairBand() {
@@ -63,7 +64,7 @@ public class ItemHairBand extends ItemArmor {
         for (Potion potion : potions) {
             PotionEffect effect = player.getActivePotionEffect(potion);
             if (effect == null || effect.getDuration() < 10)
-                player.addPotionEffect(new PotionEffect(potion.id, 80, 1));
+                player.addPotionEffect(new PotionEffect(potion.id, 80, 0));
         }
     }
 
