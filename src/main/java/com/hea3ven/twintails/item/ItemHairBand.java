@@ -65,7 +65,7 @@ public class ItemHairBand extends ItemArmor {
         for (Potion potion : potions) {
             PotionEffect effect = player.getActivePotionEffect(potion);
             if (effect == null || effect.getDuration() < 10)
-                player.addPotionEffect(new PotionEffect(potion.id, 80, 0));
+                player.addPotionEffect(new PotionEffect(potion.id, 80, 1));
         }
     }
 
