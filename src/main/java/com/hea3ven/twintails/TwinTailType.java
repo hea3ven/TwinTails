@@ -14,11 +14,13 @@ public class TwinTailType {
     private IIcon icon;
     private int ordinal;
     private Potion[] potions;
+    private Object recipeIngredient;
 
-    public TwinTailType(int ordinal, String name, Potion[] potions) {
+    public TwinTailType(int ordinal, String name, Potion[] potions, Object recipeIngredient) {
         this.ordinal = ordinal;
         this.name = name;
         this.potions = potions;
+        this.recipeIngredient = recipeIngredient;
         model = new ModelTwinTails(name);
     }
 
@@ -44,6 +46,10 @@ public class TwinTailType {
 
     public Potion[] getPotions() {
         return potions;
+    }
+
+    public Object getRecipeIngredient() {
+        return recipeIngredient;
     }
 
 }

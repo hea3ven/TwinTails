@@ -31,10 +31,10 @@ public class ItemHairBand extends ItemArmor {
     public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
-            new TwinTailType(0, "normal", new Potion[] {}),
-            new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}),
-            new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost}),
-            new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance})
+            new TwinTailType(0, "normal", new Potion[] {}, "dyeWhite"),
+            new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed"),
+            new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost}, "dyeBlue"),
+            new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance}, "dyeYellow")
     };
 
     public ItemHairBand() {
@@ -111,12 +111,15 @@ public class ItemHairBand extends ItemArmor {
 
     public void AddRecipes() {
         ItemStack normalHairTie = new ItemStack(this, 1, 0);
-        ItemStack redHairTie = new ItemStack(this, 1, 1);
         ItemStack anyHairTie = new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
 
-        GameRegistry.addRecipe(new ShapedOreRecipe(normalHairTie, " s ", "sbs", " s ", 's', Items.string, 'b', "slimeball"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(normalHairTie, " s ", "sbs",
+                " s ", 's', Items.string, 'b', "slimeball"));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(normalHairTie, anyHairTie, "dyeWhite"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(redHairTie, anyHairTie, "dyeRed"));
+        for (TwinTailType twinTailType : twinTailTypes) {
+            ItemStack typeHairTie = new ItemStack(this, 1, twinTailType.getOrdinal());
+            GameRegistry.addRecipe(new ShapelessOreRecipe(typeHairTie,
+                    anyHairTie, twinTailType.getRecipeIngredient()));
+        }
     }
 }
