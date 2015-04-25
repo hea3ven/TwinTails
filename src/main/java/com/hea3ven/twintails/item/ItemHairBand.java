@@ -31,7 +31,7 @@ public class ItemHairBand extends ItemArmor {
     public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
-            new TwinTailType(0, "normal", new Potion[] {}, "dyeWhite"),
+            new TwinTailType(0, "white", new Potion[] {}, "dyeWhite"),
             new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed"),
             new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost}, "dyeBlue"),
             new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance}, "dyeYellow")
