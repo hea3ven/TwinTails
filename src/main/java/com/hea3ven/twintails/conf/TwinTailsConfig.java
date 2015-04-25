@@ -33,7 +33,7 @@ public class TwinTailsConfig {
         twinTailsEffects = configFile.getBoolean(
                 "TwinTailsEffects",
                 Configuration.CATEGORY_GENERAL,
-                true,
+                false,
                 "Whether you get effects while wearing twintails or not");
         
         if(configFile.hasChanged())
