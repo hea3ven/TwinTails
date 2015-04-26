@@ -1,7 +1,6 @@
 package com.hea3ven.twintails.item;
 
 import java.util.List;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,16 +14,14 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import com.hea3ven.twintails.TwinTailType;
-import com.hea3ven.twintails.TwinTailsMod;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+import com.hea3ven.twintails.TwinTailType;
+import com.hea3ven.twintails.TwinTailsMod;
 
 public class ItemHairBand extends ItemArmor {
 
@@ -41,7 +38,7 @@ public class ItemHairBand extends ItemArmor {
     public ItemHairBand() {
         super(hairBandArmorMaterial, 0, 0);
         setUnlocalizedName("hairBand");
-        setCreativeTab(CreativeTabs.tabCombat);
+        setCreativeTab(TwinTailsMod.creativeTab);
         setHasSubtypes(true);
         setMaxDamage(0);
     }

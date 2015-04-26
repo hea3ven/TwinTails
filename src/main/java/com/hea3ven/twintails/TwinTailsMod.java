@@ -1,8 +1,5 @@
 package com.hea3ven.twintails;
 
-import com.hea3ven.twintails.conf.TwinTailsConfig;
-import com.hea3ven.twintails.item.ItemHairBand;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -11,6 +8,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import com.hea3ven.twintails.conf.TwinTailsConfig;
+import com.hea3ven.twintails.item.ItemHairBand;
 
 @Mod(modid = TwinTailsMod.MODID,
         guiFactory="com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory")
@@ -25,6 +24,8 @@ public class TwinTailsMod {
     public static TwinTailsCommonProxy proxy;
 
     public static TwinTailsConfig config = new TwinTailsConfig();
+
+    public static CreativeTabTwinTails creativeTab = new CreativeTabTwinTails();
 
     public static ItemHairBand hairBand;
 
@@ -41,5 +42,6 @@ public class TwinTailsMod {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+		creativeTab.init();
     }
 }
