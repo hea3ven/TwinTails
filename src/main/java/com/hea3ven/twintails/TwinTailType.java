@@ -1,11 +1,13 @@
 package com.hea3ven.twintails;
 
+import com.hea3ven.twintails.client.model.ModelTwinTails;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.IIcon;
-
-import com.hea3ven.twintails.client.model.ModelTwinTails;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TwinTailType {
 
@@ -21,7 +23,8 @@ public class TwinTailType {
         this.name = name;
         this.potions = potions;
         this.recipeIngredient = recipeIngredient;
-        model = new ModelTwinTails(name);
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+        	model = new ModelTwinTails(name);
     }
 
     public int getOrdinal() {
@@ -32,6 +35,7 @@ public class TwinTailType {
         return name;
     }
 
+    @SideOnly(Side.CLIENT)
     public ModelBiped getModel() {
         return model;
     }
