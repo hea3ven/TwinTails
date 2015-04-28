@@ -17,12 +17,14 @@ public class TwinTailType {
     private int ordinal;
     private Potion[] potions;
     private Object recipeIngredient;
+	private int colorOrdinal;
 
-    public TwinTailType(int ordinal, String name, Potion[] potions, Object recipeIngredient) {
+    public TwinTailType(int ordinal, String name, Potion[] potions, Object recipeIngredient, int colorOrdinal) {
         this.ordinal = ordinal;
         this.name = name;
         this.potions = potions;
         this.recipeIngredient = recipeIngredient;
+        this.colorOrdinal = colorOrdinal;
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         	model = new ModelTwinTails(name);
     }
@@ -56,4 +58,7 @@ public class TwinTailType {
         return recipeIngredient;
     }
 
+	public int getColorOrdinal() {
+		return colorOrdinal;
+	}
 }
