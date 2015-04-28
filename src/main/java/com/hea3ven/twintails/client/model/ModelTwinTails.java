@@ -24,20 +24,11 @@ public class ModelTwinTails extends ModelBiped {
 
     @Override
     public void render(Entity entity, float p_78088_2_, float p_78088_3_, float p_78088_4_, float headAngleY, float headAngleX, float p_78088_7_) {
-
         Minecraft.getMinecraft().getTextureManager().bindTexture(modelTexture);
 
         GL11.glPushMatrix();
-        if (headAngleY != 0.0F)
-            GL11.glRotatef(headAngleY, 0.0F, 1.0F, 0.0F);
-
-        if (headAngleX != 0.0F)
-            GL11.glRotatef(headAngleX, 1.0F, 0.0F, 0.0F);
-
-        GL11.glScalef(-1.0F, -1.0F, 1.0F);
-
-        if (entity.isSneaking())
-            GL11.glTranslatef(0.0f, -0.0625f, 0.0f);
+        GL11.glRotatef(headAngleY, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(headAngleX, 1.0F, 0.0F, 0.0F);
 
         model.renderAll();
 
