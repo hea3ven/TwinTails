@@ -17,8 +17,8 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.1"
-group= "com.hea3ven.twintails"
+version = "1.0.2"
+group = "com.hea3ven.twintails"
 archivesBaseName = "twintails"
 
 minecraft {
