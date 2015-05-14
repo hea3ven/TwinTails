@@ -19,8 +19,10 @@ public class VersionCheck {
                 if (latestVersion != null
                         && !latestVersion.equals(TwinTailsMod.config.versionLatest)) {
                     TwinTailsMod.config.setLatestVersion(latestVersion);
-                    event.player.addChatMessage(new ChatComponentTranslation("twintails.update",
-                            latestVersion));
+                    if (!TwinTailsMod.VERSION.equals(latestVersion)) {
+                        event.player.addChatMessage(new ChatComponentTranslation(
+                                "twintails.update", latestVersion));
+                    }
                 }
                 FMLCommonHandler.instance().bus().unregister(this);
             }

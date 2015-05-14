@@ -16,10 +16,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import com.hea3ven.twintails.conf.TwinTailsConfig;
 import com.hea3ven.twintails.item.ItemHairBand;
 
-@Mod(modid = TwinTailsMod.MODID, guiFactory = "com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory")
+@Mod(modid = TwinTailsMod.MODID, version = TwinTailsMod.VERSION, guiFactory = "com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory")
 public class TwinTailsMod {
 
     public static final String MODID = "twintails";
+    public static final String VERSION = "1.0.2";
 
     @Instance(TwinTailsMod.MODID)
     public static TwinTailsMod instance;
