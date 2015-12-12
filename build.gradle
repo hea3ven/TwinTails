@@ -5,25 +5,22 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
 
-apply plugin: 'forge'
+apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.0.3"
+version = "1.1.0"
 group = "com.hea3ven.twintails"
 archivesBaseName = "twintails"
 
 minecraft {
-    version = "1.7.10-10.13.2.1232"
+    version = "1.8.8-11.15.0.1623-1.8.8"
     runDir = "eclipse"
+    mappings = "snapshot_20151211"
 }
 
 dependencies {

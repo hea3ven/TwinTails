@@ -1,19 +1,15 @@
 package com.hea3ven.twintails;
 
 import com.hea3ven.twintails.client.model.ModelTwinTails;
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
 import net.minecraft.potion.Potion;
-import net.minecraft.util.IIcon;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TwinTailType {
-
     private String name;
     private ModelTwinTails model;
-    private IIcon icon;
     private int ordinal;
     private Potion[] potions;
     private Object recipeIngredient;
@@ -25,9 +21,12 @@ public class TwinTailType {
         this.potions = potions;
         this.recipeIngredient = recipeIngredient;
         this.colorOrdinal = colorOrdinal;
-        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
-        	model = new ModelTwinTails(name);
     }
+
+	@SideOnly(Side.CLIENT)
+	public void setModel(ModelTwinTails model) {
+		this.model = model;
+	}
 
     public int getOrdinal() {
         return ordinal;
@@ -38,16 +37,8 @@ public class TwinTailType {
     }
 
     @SideOnly(Side.CLIENT)
-    public ModelBiped getModel() {
+    public ModelTwinTails getModel() {
         return model;
-    }
-
-    public void registerIcon(IIconRegister iconRegister) {
-        icon = iconRegister.registerIcon("twintails:hairband_" + name);
-    }
-
-    public IIcon getIcon() {
-        return icon;
     }
 
     public Potion[] getPotions() {

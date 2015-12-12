@@ -1,0 +1,6 @@
+{
+  "parent": "forge:default-item",
+  "textures": {
+    "layer0": "twintails:items/hairband_blue"
+  }
+}
