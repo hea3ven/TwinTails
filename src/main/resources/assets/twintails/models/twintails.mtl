@@ -1,0 +1,27 @@
+newmtl cyan
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_cyan
+
+newmtl blue
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_blue
+
+newmtl normal
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_normal
+
+newmtl pink
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_pink
+
+newmtl red
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_red
+
+newmtl white
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_white
+
+newmtl yellow
+Kd 1.000000 1.000000 1.000000
+map_Kd twintails:models/twintails_yellow

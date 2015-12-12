@@ -5,7 +5,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.hea3ven.twintails.TwinTailsMod;
 
-import cpw.mods.fml.client.config.GuiConfig;
+import net.minecraftforge.fml.client.config.GuiConfig;
 
 public class TwinTailsConfigGui extends GuiConfig {
 

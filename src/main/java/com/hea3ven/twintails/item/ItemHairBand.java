@@ -1,8 +1,11 @@
 package com.hea3ven.twintails.item;
 
 import java.util.List;
+
+import com.hea3ven.twintails.TwinTailType;
+import com.hea3ven.twintails.TwinTailsMod;
+
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,19 +15,16 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import com.hea3ven.twintails.TwinTailType;
-import com.hea3ven.twintails.TwinTailsMod;
 
 public class ItemHairBand extends ItemArmor {
-
     public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
     private TwinTailType[] twinTailTypes = new TwinTailType[] {
@@ -43,6 +43,10 @@ public class ItemHairBand extends ItemArmor {
         setHasSubtypes(true);
         setMaxDamage(0);
     }
+
+	public TwinTailType[] getTypes() {
+		return twinTailTypes;
+	}
 
     private int getTypeOffset(ItemStack itemStack) {
         return getTypeOffset(itemStack.getItemDamage());
@@ -72,26 +76,6 @@ public class ItemHairBand extends ItemArmor {
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
         return twinTailTypes[getTypeOffset(itemStack)].getModel();
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public boolean requiresMultipleRenderPasses() {
-        return false;
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister) {
-        for (TwinTailType twinTailType : twinTailTypes) {
-            twinTailType.registerIcon(iconRegister);
-        }
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int meta) {
-        return twinTailTypes[getTypeOffset(meta)].getIcon();
     }
 
     @Override
