@@ -17,31 +17,30 @@ version = "1.1.0"
 group = "com.hea3ven.twintails"
 archivesBaseName = "twintails"
 
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
 minecraft {
     version = "1.8.8-11.15.0.1623-1.8.8"
-    runDir = "eclipse"
     mappings = "snapshot_20151211"
+
+    runDir = "run"
 }
 
 dependencies {
 }
 
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
+processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
+    inputs.property "forgeversion", project.minecraft.forgeVersion
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
         include 'version.properties'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version': project.version, 'mcversion': project.minecraft.version, 'forgeversion': project.minecraft.forgeVersion
     }
         
-    // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
         exclude 'version.properties'

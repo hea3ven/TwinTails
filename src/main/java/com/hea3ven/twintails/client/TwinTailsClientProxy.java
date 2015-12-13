@@ -2,6 +2,7 @@ package com.hea3ven.twintails.client;
 
 import net.minecraft.client.resources.model.ModelResourceLocation;
 
+import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -29,6 +30,13 @@ public class TwinTailsClientProxy extends TwinTailsCommonProxy {
 	public void onTextureStitch(TextureStitchEvent.Pre event) {
 		for (TwinTailType type : TwinTailsMod.hairBand.getTypes()) {
 			type.getModel().loadTexture(event.map);
+		}
+	}
+
+	@SubscribeEvent
+	public void onModelBake(ModelBakeEvent event) {
+		for (TwinTailType type : TwinTailsMod.hairBand.getTypes()) {
+			type.getModel().bakeModel(event.modelLoader);
 		}
 	}
 }
