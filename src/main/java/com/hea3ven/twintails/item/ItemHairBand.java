@@ -10,6 +10,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -27,15 +28,17 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class ItemHairBand extends ItemArmor {
     public static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
-    private TwinTailType[] twinTailTypes = new TwinTailType[] {
-            new TwinTailType(0, "white", new Potion[] {}, "dyeWhite", 0),
-            new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed", 14),
-            new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost}, "dyeBlue", 11),
-            new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance}, "dyeYellow", 4),
-            new TwinTailType(4, "cyan", new Potion[] {}, "dyeCyan", 9),
-            new TwinTailType(5, "pink", new Potion[] {}, "dyePink", 6),
-            new TwinTailType(6, "black", new Potion[] {}, "dyeBlack", 15)
-    };
+    private TwinTailType[] twinTailTypes =
+            new TwinTailType[] {new TwinTailType(0, "white", new Potion[] {}, "dyeWhite", EnumDyeColor.WHITE),
+                    new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed",
+                            EnumDyeColor.RED),
+                    new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost},
+                            "dyeBlue", EnumDyeColor.BLUE),
+                    new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance},
+                            "dyeYellow", EnumDyeColor.YELLOW),
+                    new TwinTailType(4, "cyan", new Potion[] {}, "dyeCyan", EnumDyeColor.CYAN),
+                    new TwinTailType(5, "pink", new Potion[] {}, "dyePink", EnumDyeColor.PINK),
+                    new TwinTailType(6, "black", new Potion[] {}, "dyeBlack", EnumDyeColor.BLACK)};
 
     public ItemHairBand() {
         super(hairBandArmorMaterial, 0, 0);
@@ -45,9 +48,9 @@ public class ItemHairBand extends ItemArmor {
         setMaxDamage(0);
     }
 
-	public TwinTailType[] getTypes() {
-		return twinTailTypes;
-	}
+    public TwinTailType[] getTypes() {
+        return twinTailTypes;
+    }
 
     private int getTypeOffset(ItemStack itemStack) {
         return getTypeOffset(itemStack.getItemDamage());
@@ -60,8 +63,7 @@ public class ItemHairBand extends ItemArmor {
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         if (!world.isRemote && TwinTailsMod.config.twinTailsEffects) {
-            refreshPotionsEffects(player,
-                    twinTailTypes[getTypeOffset(itemStack)].getPotions());
+            refreshPotionsEffects(player, twinTailTypes[getTypeOffset(itemStack)].getPotions());
         }
     }
 
@@ -81,11 +83,10 @@ public class ItemHairBand extends ItemArmor {
 
     @Override
     public String getUnlocalizedName(ItemStack itemStack) {
-        return getUnlocalizedName() + "."
-                + twinTailTypes[getTypeOffset(itemStack)].getName();
+        return getUnlocalizedName() + "." + twinTailTypes[getTypeOffset(itemStack)].getName();
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
     public void getSubItems(Item item, CreativeTabs creativeTabs, List itemList) {
         for (TwinTailType twinTailType : twinTailTypes) {
@@ -97,12 +98,12 @@ public class ItemHairBand extends ItemArmor {
         ItemStack anyHairTie = new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
 
         for (TwinTailType twinTailType : twinTailTypes) {
-            ItemStack wool = new ItemStack(Blocks.wool, 1, twinTailType.getColorOrdinal());
+            ItemStack wool = new ItemStack(Blocks.wool, 1, twinTailType.getColor().getMetadata());
             ItemStack typeHairTie = new ItemStack(this, 1, twinTailType.getOrdinal());
-            GameRegistry.addRecipe(new ShapedOreRecipe(typeHairTie, " s ", "sbs",
-                    " s ", 's', wool, 'b', "slimeball"));
-            GameRegistry.addRecipe(new ShapelessOreRecipe(typeHairTie,
-                    anyHairTie, twinTailType.getRecipeIngredient()));
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(typeHairTie, " s ", "sbs", " s ", 's', wool, 'b', "slimeball"));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(typeHairTie, anyHairTie, twinTailType.getRecipeIngredient()));
         }
     }
 }
