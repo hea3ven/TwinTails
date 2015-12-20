@@ -13,9 +13,16 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+repositories {
+    mavenLocal()
+    maven {
+        url "https://raw.github.com/hea3ven/mvn-repo/master"
+    }
+}
+
 version = "1.1.0"
 group = "com.hea3ven.twintails"
-archivesBaseName = "twintails"
+archivesBaseName = "TwinTails"
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -27,7 +34,19 @@ minecraft {
     runDir = "run"
 }
 
+configurations {
+    release
+}
+
 dependencies {
+    compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.2'
+    release('com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.2') {
+        transitive = false
+    }
+}
+
+sourceSets.main.java {
+    srcDirs += 'src/bootstrap/java'
 }
 
 processResources {
@@ -46,3 +65,10 @@ processResources {
         exclude 'version.properties'
     }
 }
+
+jar {
+    into ('libs') {
+        from configurations.release
+    }
+}
+

@@ -52,9 +52,8 @@ public class TwinTailsConfig {
             configFile.save();
     }
 
-    @SuppressWarnings("rawtypes")
-    public List getConfigElements(String category) {
-        List<IConfigElement> elems = new ArrayList<IConfigElement>();
+    public List<IConfigElement> getConfigElements() {
+        List<IConfigElement> elems = new ArrayList<>();
         elems.add(new ConfigElement(twintailsEffectsProp));
         elems.add(new ConfigElement(versionCheckProp));
         return elems;

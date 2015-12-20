@@ -22,8 +22,7 @@ public class CreativeTabTwinTails extends CreativeTabs {
 		return stack.getItem();
 	}
 
-	public void init() {
-		stack = new ItemStack(TwinTailsMod.hairBand, 1, 1);
+	public void init(Item item) {
+		stack = new ItemStack(item, 1, 1);
 	}
-
 }
