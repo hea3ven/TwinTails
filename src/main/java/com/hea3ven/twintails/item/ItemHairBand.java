@@ -2,9 +2,6 @@ package com.hea3ven.twintails.item;
 
 import java.util.List;
 
-import com.hea3ven.twintails.TwinTailType;
-import com.hea3ven.twintails.TwinTailsMod;
-
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -24,6 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import com.hea3ven.twintails.TwinTailType;
 
 public class ItemHairBand extends ItemArmor {
 	private static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
@@ -73,7 +72,8 @@ public class ItemHairBand extends ItemArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot,
+			ModelBiped defaultModel) {
 		return twinTailTypes[getTypeOffset(itemStack)].getModel();
 	}
 

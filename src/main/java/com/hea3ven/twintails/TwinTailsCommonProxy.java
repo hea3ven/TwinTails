@@ -1,7 +1,6 @@
 package com.hea3ven.twintails;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import net.minecraft.item.ItemStack;
 
@@ -65,9 +64,9 @@ public class TwinTailsCommonProxy extends ProxyModBase {
 					@Override
 					public void accept(Configuration configuration) {
 						ConfigCategory gralCat = configuration.getCategory("general");
-						if(gralCat.containsKey("VersionCheck"))
+						if (gralCat.containsKey("VersionCheck"))
 							gralCat.remove("VersionCheck");
-						if(gralCat.containsKey("VersionLatest"))
+						if (gralCat.containsKey("VersionLatest"))
 							gralCat.remove("VersionLatest");
 					}
 				}));
