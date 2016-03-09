@@ -15,7 +15,8 @@ import com.hea3ven.tools.bootstrap.Bootstrap;
 import com.hea3ven.twintails.conf.TwinTailsConfig;
 
 @Mod(modid = TwinTailsMod.MODID, version = TwinTailsMod.VERSION, dependencies = TwinTailsMod.DEPENDENCIES,
-		guiFactory = "com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory")
+		guiFactory = "com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory",
+		updateJSON = "https://raw.githubusercontent.com/hea3ven/TwinTails/master/media/update.json")
 public class TwinTailsMod {
 
 	public static final String MODID = "twintails";
@@ -51,6 +52,5 @@ public class TwinTailsMod {
 	@EventHandler
 	public void onPostInitEvent(FMLPostInitializationEvent event) {
 		proxy.onPostInitEvent(event);
-		VersionCheck.init();
 	}
 }
