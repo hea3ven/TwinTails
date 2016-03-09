@@ -14,16 +14,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import com.hea3ven.tools.bootstrap.Bootstrap;
 import com.hea3ven.twintails.conf.TwinTailsConfig;
 
-@Mod(modid = TwinTailsMod.MODID, version = TwinTailsMod.VERSION,
+@Mod(modid = TwinTailsMod.MODID, version = TwinTailsMod.VERSION, dependencies = TwinTailsMod.DEPENDENCIES,
 		guiFactory = "com.hea3ven.twintails.conf.TwinTailsConfigGuiFactory")
 public class TwinTailsMod {
 
 	public static final String MODID = "twintails";
-	public static final String VERSION = "1.0.3";
+	public static final String VERSION = "PROJECTVERSION";
+	public static final String DEPENDENCIES = "required-after:Forge@[FORGEVERSION,)";
 
 	static {
-		Bootstrap.require(MODID, "1.0.x");
-		Bootstrap.initLib(MODID, "h3nt-commonutils", "1.0.2", "1.0.x");
+		Bootstrap.init();
 	}
 
 	@Instance(TwinTailsMod.MODID)
@@ -36,21 +36,21 @@ public class TwinTailsMod {
 	public static Logger logger = LogManager.getLogger("TwinTails");
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void onPreInitEvent(FMLPreInitializationEvent event) {
 		config.init(event.getSuggestedConfigurationFile());
 		MinecraftForge.EVENT_BUS.register(config);
 
-		proxy.onPreInitEvent();
+		proxy.onPreInitEvent(event);
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.onInitEvent();
+	public void onInitEvent(FMLInitializationEvent event) {
+		proxy.onInitEvent(event);
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-		proxy.onPostInitEvent();
+	public void onPostInitEvent(FMLPostInitializationEvent event) {
+		proxy.onPostInitEvent(event);
 		VersionCheck.init();
 	}
 }
