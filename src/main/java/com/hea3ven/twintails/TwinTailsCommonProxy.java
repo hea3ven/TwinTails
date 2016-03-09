@@ -1,17 +1,23 @@
 package com.hea3ven.twintails;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import net.minecraft.item.ItemStack;
 
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
+import net.minecraftforge.common.config.Property.Type;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.hea3ven.tools.commonutils.mod.ProxyModBase;
+import com.hea3ven.tools.commonutils.mod.config.FileConfigManagerBuilder;
 import com.hea3ven.tools.commonutils.util.SidedCall;
 import com.hea3ven.twintails.client.ModelBakerTwinTails;
 import com.hea3ven.twintails.item.ItemHairBand;
@@ -39,6 +45,32 @@ public class TwinTailsCommonProxy extends ProxyModBase {
 	@Override
 	public void onInitEvent(FMLInitializationEvent event) {
 		super.onInitEvent(event);
+	}
+
+	@Override
+	protected void registerConfig() {
+		addConfigManager(new FileConfigManagerBuilder()
+				.setFileName("twintails.cfg")
+				.setDesc("TwinTails Configuration")
+				.addCategory("general")
+				.addValue("TwinTailsEffects", "false", Type.BOOLEAN,
+						"Enable to get effects while wearing certain twintails", new Consumer<Property>() {
+							@Override
+							public void accept(Property property) {
+								ItemHairBand.twinTailsEffects = property.getBoolean();
+							}
+						})
+				.endCategory()
+				.Update(new Consumer<Configuration>() {
+					@Override
+					public void accept(Configuration configuration) {
+						ConfigCategory gralCat = configuration.getCategory("general");
+						if(gralCat.containsKey("VersionCheck"))
+							gralCat.remove("VersionCheck");
+						if(gralCat.containsKey("VersionLatest"))
+							gralCat.remove("VersionLatest");
+					}
+				}));
 	}
 
 	@Override

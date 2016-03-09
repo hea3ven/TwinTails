@@ -28,6 +28,8 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class ItemHairBand extends ItemArmor {
 	private static final ArmorMaterial hairBandArmorMaterial = ArmorMaterial.CHAIN;
 
+	public static boolean twinTailsEffects = false;
+
 	public static TwinTailType[] twinTailTypes =
 			new TwinTailType[] {new TwinTailType(0, "white", new Potion[] {}, "dyeWhite", EnumDyeColor.WHITE),
 					new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed",
@@ -56,7 +58,7 @@ public class ItemHairBand extends ItemArmor {
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-		if (!world.isRemote && TwinTailsMod.config.twinTailsEffects) {
+		if (!world.isRemote && twinTailsEffects) {
 			refreshPotionsEffects(player, twinTailTypes[getTypeOffset(itemStack)].getPotions());
 		}
 	}
