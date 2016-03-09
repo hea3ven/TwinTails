@@ -1,0 +1,18 @@
+{
+	"promos": {
+		"1.7.10-latest": "1.0.3",
+		"1.8.9-latest": "1.8.9-1.1.0",
+		"1.7.10-recommended": "1.0.3",
+		"1.8.9-recommended": "1.8.9-1.1.0"
+	},
+	"1.7.10": {
+		"1.0.0": "    * Initial version.",
+		"1.0.1": "    * Added the \"Tail Blue's Hair Tie\" item.\n    * Added the \"Tail Yellow's Hair Tie\" item.",
+		"1.0.2": "    * New model for the white twintails.\n    * Added the \"Miku's Hair Tie\" item.\n    * Change the effects config option to be disabled by default.\n    * Fix an error when launching a server.\n    * Add a creative tab.\n    * Cange the hair tie recipe to use colored wool.",
+		"1.0.3": "    * Added Chinese translations (by UUUii).\n    * Added the \"Madoka's Hair Tie\" item.\n    * Fixed an error in the Spanish translation.\n    * Added a version checker."
+	},
+	"1.8.9": {
+		"1.8.9-1.1.0": "    * Update to 1.8.8 (asie, hea3ven).\n    * Add the \"Hestia's Hair Tie\" item."
+	},
+	"homepage": "https://github.com/hea3ven/TwinTails"
+}

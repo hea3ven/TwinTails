@@ -1,74 +1,34 @@
 buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-    }
+	repositories {
+		jcenter()
+		maven {
+			name = "forge"
+			url = "http://files.minecraftforge.net/maven"
+		}
+		maven {
+			name = "sonatype"
+			url = "https://oss.sonatype.org/content/repositories/snapshots/"
+		}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+		classpath 'com.matthewprenger:CurseGradle:1.0-SNAPSHOT'
+		classpath 'org.ajoberstar:grgit:1.4.1'
+	}
+}
+
+plugins {
+	id "org.ajoberstar.grgit" version "1.4.1"
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
-
-repositories {
-    mavenLocal()
-    maven {
-        url "https://raw.github.com/hea3ven/mvn-repo/master"
-    }
-}
-
-version = "1.1.0"
-group = "com.hea3ven.twintails"
-archivesBaseName = "TwinTails"
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-minecraft {
-    version = "1.8.8-11.15.0.1623-1.8.8"
-    mappings = "snapshot_20151211"
-
-    runDir = "run"
-}
-
-configurations {
-    release
-}
+apply plugin: 'com.matthewprenger.cursegradle'
+apply from: 'mcbuild.gradle'
 
 dependencies {
-    compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.2'
-    release('com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.2') {
-        transitive = false
-    }
-}
+	compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.3:deobf'
+	release 'com.hea3ven.tools.commonutils:h3nt-commonutils:1.0.3'
 
-sourceSets.main.java {
-    srcDirs += 'src/bootstrap/java'
-}
-
-processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-    inputs.property "forgeversion", project.minecraft.forgeVersion
-
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        include 'version.properties'
-        expand 'version': project.version, 'mcversion': project.minecraft.version, 'forgeversion': project.minecraft.forgeVersion
-    }
-        
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-        exclude 'version.properties'
-    }
-}
-
-jar {
-    into ('libs') {
-        from configurations.release
-    }
+	testCompile "junit:junit:4.12"
 }
 

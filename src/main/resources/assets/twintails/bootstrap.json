@@ -1,0 +1,10 @@
+{
+	"modid": "twintails",
+	"required": "1.1.x",
+	"libs": {
+		"h3nt-commonutils": {
+			"version": "1.1.0",
+			"required": "1.1.x"
+		}
+	}
+}
