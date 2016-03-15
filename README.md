@@ -8,6 +8,7 @@ A Minecraft mod that adds twintails. This mod adds several cosmetic "Hair Tie" i
 ![](https://raw.githubusercontent.com/hea3ven/TwinTails/master/twintails_ingame4.png)
 ![](https://raw.githubusercontent.com/hea3ven/TwinTails/master/twintails_ingame5.png)
 ![](https://raw.githubusercontent.com/hea3ven/TwinTails/master/twintails_ingame6.png)
+![](https://raw.githubusercontent.com/hea3ven/TwinTails/master/twintails_ingame7.png)
 
 ## Download and instalation
 
@@ -15,7 +16,7 @@ A Minecraft mod that adds twintails. This mod adds several cosmetic "Hair Tie" i
 
 MediaFire: [Twin Tails 1.8.9-1.1.0](http://www.mediafire.com/download/v142nz1umz0j9c3/TwinTails-1.8.9-1.1.0.jar)
 
-Curse: [TwinTails v1.0.3](http://minecraft.curseforge.com/mc-mods/229959-twintails/files/2238282)
+Curse: [TwinTails 1.8.9-1.1.0](http://www.curse.com/mc-mods/Minecraft/229959-twintails/2287054)
 
 This mod requires forge to be installed.
 To install the mod copy the file to the "mods" folder
