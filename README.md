@@ -13,7 +13,7 @@ A Minecraft mod that adds twintails. This mod adds several cosmetic "Hair Tie" i
 
 [Changelog](https://github.com/hea3ven/TwinTails/blob/master/CHANGELOG)
 
-MediaFire: [TwinTails v1.0.3](http://www.mediafire.com/download/xzxyaabjli112vv/twintails-1.0.3.jar)
+MediaFire: [Twin Tails 1.8.9-1.1.0](http://www.mediafire.com/download/v142nz1umz0j9c3/TwinTails-1.8.9-1.1.0.jar)
 
 Curse: [TwinTails v1.0.3](http://minecraft.curseforge.com/mc-mods/229959-twintails/files/2238282)
 
