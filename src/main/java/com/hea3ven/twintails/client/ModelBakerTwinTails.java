@@ -5,9 +5,9 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.util.ResourceLocation;
 
 import net.minecraftforge.client.event.ModelBakeEvent;
@@ -16,6 +16,7 @@ import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.obj.OBJModel;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import com.hea3ven.tools.commonutils.client.BakerUtil;
 import com.hea3ven.tools.commonutils.client.ModelBakerBase;
 import com.hea3ven.twintails.TwinTailType;
 import com.hea3ven.twintails.item.ItemHairBand;
@@ -38,7 +39,8 @@ public class ModelBakerTwinTails extends ModelBakerBase {
 			IModel model = getModel(new ResourceLocation("twintails:twintails_" + type.getName() + ".obj"));
 			if (model instanceof OBJModel)
 				model = ((OBJModel) model).process(ImmutableMap.of("flip-v", "true"));
-			IBakedModel bakedModel = bake(model, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL, textures);
+			IBakedModel bakedModel =
+					BakerUtil.bake(model, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL, textures);
 			type.getModel().setModel(bakedModel);
 		}
 	}

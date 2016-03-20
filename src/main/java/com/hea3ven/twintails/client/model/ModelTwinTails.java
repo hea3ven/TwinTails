@@ -1,20 +1,17 @@
 package com.hea3ven.twintails.client.model;
 
-import java.util.List;
-
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumFacing;
 
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -48,22 +45,14 @@ public class ModelTwinTails extends ModelBiped {
 		GlStateManager.rotate(180, 1.0F, 0.0F, 0.0F);
 
 		Tessellator tess = Tessellator.getInstance();
-		WorldRenderer wr = tess.getWorldRenderer();
+		VertexBuffer wr = tess.getBuffer();
 
 		wr.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR_NORMAL);
 
-		for (BakedQuad b : bakedModel.getGeneralQuads()) {
+		for (BakedQuad b : bakedModel.getQuads(null, null, 0)) {
 			wr.addVertexData(b.getVertexData());
 		}
 
-		for (EnumFacing f : EnumFacing.VALUES) {
-			List<BakedQuad> bl = bakedModel.getFaceQuads(f);
-			if (bl != null) {
-				for (BakedQuad b : bl) {
-					wr.addVertexData(b.getVertexData());
-				}
-			}
-		}
 		tess.draw();
 
 		GlStateManager.popMatrix();

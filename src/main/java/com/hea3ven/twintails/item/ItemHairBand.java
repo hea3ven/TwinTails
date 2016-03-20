@@ -7,6 +7,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -31,18 +33,20 @@ public class ItemHairBand extends ItemArmor {
 
 	public static TwinTailType[] twinTailTypes =
 			new TwinTailType[] {new TwinTailType(0, "white", new Potion[] {}, "dyeWhite", EnumDyeColor.WHITE),
-					new TwinTailType(1, "red", new Potion[] {Potion.moveSpeed, Potion.jump}, "dyeRed",
+					new TwinTailType(1, "red", new Potion[] {MobEffects.moveSpeed, MobEffects.jump}, "dyeRed",
 							EnumDyeColor.RED),
-					new TwinTailType(2, "blue", new Potion[] {Potion.waterBreathing, Potion.damageBoost},
-							"dyeBlue", EnumDyeColor.BLUE),
-					new TwinTailType(3, "yellow", new Potion[] {Potion.resistance, Potion.fireResistance},
-							"dyeYellow", EnumDyeColor.YELLOW),
+					new TwinTailType(2, "blue",
+							new Potion[] {MobEffects.waterBreathing, MobEffects.damageBoost}, "dyeBlue",
+							EnumDyeColor.BLUE),
+					new TwinTailType(3, "yellow",
+							new Potion[] {MobEffects.resistance, MobEffects.fireResistance}, "dyeYellow",
+							EnumDyeColor.YELLOW),
 					new TwinTailType(4, "cyan", new Potion[] {}, "dyeCyan", EnumDyeColor.CYAN),
 					new TwinTailType(5, "pink", new Potion[] {}, "dyePink", EnumDyeColor.PINK),
 					new TwinTailType(6, "black", new Potion[] {}, "dyeBlack", EnumDyeColor.BLACK)};
 
 	public ItemHairBand() {
-		super(hairBandArmorMaterial, 0, 0);
+		super(hairBandArmorMaterial, 0, EntityEquipmentSlot.HEAD);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}
@@ -66,14 +70,14 @@ public class ItemHairBand extends ItemArmor {
 		for (Potion potion : potions) {
 			PotionEffect effect = player.getActivePotionEffect(potion);
 			if (effect == null || effect.getDuration() < 10)
-				player.addPotionEffect(new PotionEffect(potion.id, 80, 1));
+				player.addPotionEffect(new PotionEffect(potion, 80, 1));
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot,
-			ModelBiped defaultModel) {
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack,
+			EntityEquipmentSlot armorSlot, ModelBiped defaultModel) {
 		return twinTailTypes[getTypeOffset(itemStack)].getModel();
 	}
 
