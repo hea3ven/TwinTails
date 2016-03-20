@@ -2,8 +2,10 @@
 	"promos": {
 		"1.7.10-latest": "1.0.3",
 		"1.8.9-latest": "1.8.9-1.1.0",
+		"1.9-latest": "1.9-1.1.0",
 		"1.7.10-recommended": "1.0.3",
-		"1.8.9-recommended": "1.8.9-1.1.0"
+		"1.8.9-recommended": "1.8.9-1.1.0",
+		"1.9-recommended": "1.9-1.1.0"
 	},
 	"1.7.10": {
 		"1.0.0": "    * Initial version.",
@@ -13,6 +15,9 @@
 	},
 	"1.8.9": {
 		"1.8.9-1.1.0": "    * Update to 1.8.8 (asie, hea3ven).\n    * Add the \"Hestia's Hair Tie\" item."
+	},
+	"1.9": {
+		"1.9-1.1.0": "    * Update to Minecraft 1.9."
 	},
 	"homepage": "https://github.com/hea3ven/TwinTails"
 }
