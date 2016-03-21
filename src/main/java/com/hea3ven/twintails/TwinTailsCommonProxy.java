@@ -31,7 +31,7 @@ public class TwinTailsCommonProxy extends ProxyModBase {
 		SidedCall.run(Side.CLIENT, new Runnable() {
 			@Override
 			public void run() {
-				OBJLoader.instance.addDomain("twintails");
+				OBJLoader.INSTANCE.addDomain("twintails");
 			}
 		});
 	}
