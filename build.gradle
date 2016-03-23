@@ -26,8 +26,8 @@ apply plugin: 'com.matthewprenger.cursegradle'
 apply from: 'mcbuild.gradle'
 
 dependencies {
-	compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.0.0:deobf'
-	release 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.0.0'
+	compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.0.1:deobf'
+	release 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.0.1'
 
 	testCompile "junit:junit:4.12"
 }

@@ -1,4 +1,7 @@
 // Hea3veN's build script for minecraft mods
+// v1.0.5 (2016-03-08):
+//     * Add the FMLCorePluginContainsFMLMod attribute to the manifest if there is a coremod
+//     * Add version replacement for kotlin projects
 // v1.0.4 (2016-03-08):
 //     * Fix issue when the changelog doesn't have the current version
 // v1.0.3 (2016-03-01):
@@ -46,6 +49,10 @@ minecraft {
 	replace 'PROJECTVERSION', project.version
 	replace 'MCVERSION', project.minecraft.version
 	replace 'FORGEVERSION', project.minecraft.forgeVersion
+}
+
+if (project.hasProperty('project_coremod')) {
+	jar.manifest.attributes.put('FMLCorePluginContainsFMLMod', 'true')
 }
 
 if (project.hasProperty('project_curseforge_id')) {
@@ -124,6 +131,19 @@ task copyRunMods(type: Copy) {
 	into minecraft.runDir + "/mods/"
 }
 setupDecompWorkspace.dependsOn copyRunMods
+
+if (tasks.findByPath('compileKotlin') != null) {
+	task updateMainKotlinFile << {
+		def mainFile = new File('src/main/java/' + project_class.replace('.', '/') + '.kt')
+		if (mainFile.exists()) {
+			def content = mainFile.text.
+					replaceAll(/val VERSION = "[^"]*"/, 'val VERSION = "' + project.version + '"').
+					replaceAll(/Forge@\[[^,]*,\)/, 'Forge@[' + project.minecraft.forgeVersion + ',)')
+			mainFile.withWriter { w -> w << content }
+		}
+	}
+	compileKotlin.dependsOn updateMainKotlinFile
+}
 
 task updateChangelog << {
 	UpdateFile updateFile = UpdateFile.load(new File(projectDir, project_update_file))
