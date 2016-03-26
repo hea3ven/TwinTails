@@ -29,7 +29,7 @@ public class ModelBakerTwinTails extends ModelBakerBase {
 	public void onTextureStitch(TextureStitchEvent.Pre event) {
 		for (TwinTailType type : ItemHairBand.twinTailTypes) {
 			ResourceLocation location = new ResourceLocation("twintails:models/twintails_" + type.getName());
-			textures.put(location, event.map.registerSprite(location));
+			textures.put(location, event.getMap().registerSprite(location));
 		}
 	}
 
