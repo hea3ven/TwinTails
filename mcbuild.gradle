@@ -48,7 +48,7 @@ minecraft {
 	replaceIn "src/main/java/${project_class_path}.java"
 	replace 'PROJECTVERSION', project.version
 	replace 'MCVERSION', project.minecraft.version
-	replace 'FORGEVERSION', project.minecraft.forgeVersion
+	replace 'FORGEVERSION', '12.16.0.1811'
 }
 
 if (project.hasProperty('project_coremod')) {
@@ -92,12 +92,12 @@ dependencies {
 processResources {
 	inputs.property "version", project.version
 	inputs.property "mcversion", project.minecraft.version
-	inputs.property "forgeversion", project.minecraft.forgeVersion
+	inputs.property "forgeversion", '12.16.0.1811'
 
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 		expand 'version': project.version, 'mcversion': project.minecraft.version,
-				'forgeversion': project.minecraft.forgeVersion
+				'forgeversion': '12.16.0.1811'
 	}
 
 	from(sourceSets.main.resources.srcDirs) {
