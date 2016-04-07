@@ -41,14 +41,19 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 minecraft {
-	version = "${version_mc}-${version_forge}"
+	version = "${version_mc}-${version_forge}" + (project.hasProperty('version_forge_branch')? '-' + version_forge_branch : '')
 	mappings = version_mappings
 	runDir = 'run'
+
+	if (project.hasProperty('project_coremod')) {
+		coreMod = project_coremod
+	}
+
 	def project_class_path = project_class.replace('.', '/')
 	replaceIn "src/main/java/${project_class_path}.java"
 	replace 'PROJECTVERSION', project.version
 	replace 'MCVERSION', project.minecraft.version
-	replace 'FORGEVERSION', '12.16.0.1811'
+	replace 'FORGEVERSION', version_forge
 }
 
 if (project.hasProperty('project_coremod')) {
@@ -90,18 +95,16 @@ dependencies {
 }
 
 processResources {
-	inputs.property "version", project.version
-	inputs.property "mcversion", project.minecraft.version
-	inputs.property "forgeversion", '12.16.0.1811'
-
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
-		expand 'version': project.version, 'mcversion': project.minecraft.version,
-				'forgeversion': '12.16.0.1811'
+		include project_bootstrap_file
+		expand project.properties
+		expand 'version': project.version, 'mcversion': project.minecraft.version
 	}
 
 	from(sourceSets.main.resources.srcDirs) {
 		exclude 'mcmod.info'
+		exclude project_bootstrap_file
 	}
 }
 
@@ -138,7 +141,7 @@ if (tasks.findByPath('compileKotlin') != null) {
 		if (mainFile.exists()) {
 			def content = mainFile.text.
 					replaceAll(/val VERSION = "[^"]*"/, 'val VERSION = "' + project.version + '"').
-					replaceAll(/Forge@\[[^,]*,\)/, 'Forge@[' + project.minecraft.forgeVersion + ',)')
+					replaceAll(/Forge@\[[^,]*,\)/, "Forge@[$version_forge,)")
 			mainFile.withWriter { w -> w << content }
 		}
 	}

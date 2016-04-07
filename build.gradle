@@ -27,8 +27,8 @@ apply from: 'mcbuild.gradle'
 
 dependencies {
 	// compile project(':CommonUtils')
-	compile 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.1.0'
-	release 'com.hea3ven.tools.commonutils:h3nt-commonutils:2.1.0'
+	compile "com.hea3ven.tools.commonutils:h3nt-commonutils:${version_commonutils}:deobf"
+	release "com.hea3ven.tools.commonutils:h3nt-commonutils:${version_commonutils}"
 
 	testCompile "junit:junit:4.12"
 }
