@@ -1,9 +1,9 @@
 itemGroup.twintails=TwinTails
 
-item.hairBand.white.name=Miss Monochrome's Hair Tie
-item.hairBand.red.name=Tail Red's Hair Tie
-item.hairBand.blue.name=Tail Blue's Hair Tie
-item.hairBand.yellow.name=Tail Yellow's Hair Tie
-item.hairBand.cyan.name=Miku's Hair Tie
-item.hairBand.pink.name=Madoka's Hair Tie
-item.hairBand.black.name=Hestia's Hair Tie
+item.twintails.hairBand.white.name=Miss Monochrome's Hair Tie
+item.twintails.hairBand.red.name=Tail Red's Hair Tie
+item.twintails.hairBand.blue.name=Tail Blue's Hair Tie
+item.twintails.hairBand.yellow.name=Tail Yellow's Hair Tie
+item.twintails.hairBand.cyan.name=Miku's Hair Tie
+item.twintails.hairBand.pink.name=Madoka's Hair Tie
+item.twintails.hairBand.black.name=Hestia's Hair Tie

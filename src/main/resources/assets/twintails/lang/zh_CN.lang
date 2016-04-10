@@ -1,10 +1,8 @@
 itemGroup.twintails=双马尾
 
-twintails.update=双马尾的新版本 (%s) 已经可以用咯
-
-item.hairBand.white.name=黑白小姐的发圈
-item.hairBand.red.name=红马尾的发圈
-item.hairBand.blue.name=蓝马尾的发圈
-item.hairBand.yellow.name=黄马尾的发圈
-item.hairBand.cyan.name=初音的发圈
-item.hairBand.pink.name=小圆的发圈
+item.twintails.hairBand.white.name=黑白小姐的发圈
+item.twintails.hairBand.red.name=红马尾的发圈
+item.twintails.hairBand.blue.name=蓝马尾的发圈
+item.twintails.hairBand.yellow.name=黄马尾的发圈
+item.twintails.hairBand.cyan.name=初音的发圈
+item.twintails.hairBand.pink.name=小圆的发圈
