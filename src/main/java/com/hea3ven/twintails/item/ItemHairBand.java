@@ -33,13 +33,13 @@ public class ItemHairBand extends ItemArmor {
 
 	public static TwinTailType[] twinTailTypes =
 			new TwinTailType[] {new TwinTailType(0, "white", new Potion[] {}, "dyeWhite", EnumDyeColor.WHITE),
-					new TwinTailType(1, "red", new Potion[] {MobEffects.moveSpeed, MobEffects.jump}, "dyeRed",
-							EnumDyeColor.RED),
+					new TwinTailType(1, "red", new Potion[] {MobEffects.SPEED, MobEffects.JUMP_BOOST},
+							"dyeRed", EnumDyeColor.RED),
 					new TwinTailType(2, "blue",
-							new Potion[] {MobEffects.waterBreathing, MobEffects.damageBoost}, "dyeBlue",
+							new Potion[] {MobEffects.WATER_BREATHING, MobEffects.STRENGTH}, "dyeBlue",
 							EnumDyeColor.BLUE),
 					new TwinTailType(3, "yellow",
-							new Potion[] {MobEffects.resistance, MobEffects.fireResistance}, "dyeYellow",
+							new Potion[] {MobEffects.RESISTANCE, MobEffects.FIRE_RESISTANCE}, "dyeYellow",
 							EnumDyeColor.YELLOW),
 					new TwinTailType(4, "cyan", new Potion[] {}, "dyeCyan", EnumDyeColor.CYAN),
 					new TwinTailType(5, "pink", new Potion[] {}, "dyePink", EnumDyeColor.PINK),
@@ -98,7 +98,7 @@ public class ItemHairBand extends ItemArmor {
 		ItemStack anyHairTie = new ItemStack(this, 1, OreDictionary.WILDCARD_VALUE);
 
 		for (TwinTailType twinTailType : twinTailTypes) {
-			ItemStack wool = new ItemStack(Blocks.wool, 1, twinTailType.getColor().getMetadata());
+			ItemStack wool = new ItemStack(Blocks.WOOL, 1, twinTailType.getColor().getMetadata());
 			ItemStack typeHairTie = new ItemStack(this, 1, twinTailType.getOrdinal());
 			GameRegistry.addRecipe(
 					new ShapedOreRecipe(typeHairTie, " s ", "sbs", " s ", 's', wool, 'b', "slimeball"));

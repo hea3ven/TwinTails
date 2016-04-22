@@ -30,7 +30,7 @@ public class ModelTwinTails extends ModelBiped {
 	@Override
 	public void render(Entity entity, float p_78088_2_, float p_78088_3_, float p_78088_4_, float headAngleY,
 			float headAngleX, float p_78088_7_) {
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 
 		GlStateManager.pushMatrix();
 		if (entity.isSneaking()) {
