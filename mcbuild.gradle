@@ -1,4 +1,8 @@
 // Hea3veN's build script for minecraft mods
+// v1.0.7 (2016-05-09):
+//     * Remove the code to update the README
+// v1.0.6 (2016-05-05):
+//     * Update to java 8
 // v1.0.5 (2016-03-08):
 //     * Add the FMLCorePluginContainsFMLMod attribute to the manifest if there is a coremod
 //     * Add version replacement for kotlin projects
@@ -37,8 +41,8 @@ version = "${version_mc}-${project_version}"
 group = "${project_group}"
 archivesBaseName = "${project_name}"
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 minecraft {
 	version = "${version_mc}-${version_forge}" + (project.hasProperty('version_forge_branch')? '-' + version_forge_branch : '')
@@ -272,30 +276,7 @@ class Changelog {
 	}
 }
 
-task updateReadme(dependsOn: 'curseforge') << {
-	def mediafireUrl = System.console().readLine('> enter mediafire url: ')
-	def curseFileId = System.console().readLine('> enter curse file id: ')
-
-	new File(project.projectDir, 'README.md.tmp').withWriter { w ->
-		new File(project.projectDir, 'README.md').eachLine { line ->
-			if (line.contains('www.mediafire.com')) {
-				line = String.
-						format("MediaFire: [%s %s](%s)", project_display_name, project.version, mediafireUrl)
-			} else if (line.contains('www.curse.com')) {
-				line = String.
-						format("Curse: [%s %s](http://www.curse.com/mc-mods/Minecraft/%s-%s/%s)",
-								project_display_name, project.version, project_curseforge_id,
-								project_curseforge_name_id, curseFileId)
-			}
-			w << line + "\n"
-		}
-	}
-
-	new File(project.projectDir, "README.md").delete()
-	new File(project.projectDir, "README.md.tmp").renameTo(new File(project.projectDir, "README.md"))
-}
-
-task commitRelease(dependsOn: updateReadme) << {
+task commitRelease(dependsOn: 'curseforge') << {
 	def repo = Grgit.open(file("."))
 	repo.commit(message: 'Version ' + project.version, all: true)
 }
@@ -307,9 +288,6 @@ task pushRelease(type: Exec, dependsOn: commitRelease) {
 def readCurrentDownloads() {
 	def downloads = '\n'
 	new File(project.projectDir, "README.md").eachLine { line ->
-		if (line.contains('www.mediafire.com')) {
-			downloads = line + downloads
-		}
 		if (line.contains('www.curse.com')) {
 			downloads = downloads + line
 		}

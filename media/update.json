@@ -10,15 +10,16 @@
         "1.9-1.1.0": "    * Update to Minecraft 1.9.",
         "1.9-1.1.1": "    * Fix crash with Forge versions higher than 12.16.0.1780.",
         "1.9-1.1.2": "    * Update to Forge 12.16.0.1811.",
-        "commit": "55c26270839dd88abbd7243c47edc43ff5018214"
+        "commit": "413621776f8563273d064f596226ad392d27917c",
+        "1.9-1.1.3": "    * Add the \"Izumi's Hair Tie\" item.\n    * Update to Forge 12.16.0.1860."
     },
     "promos": {
         "1.7.10-latest": "1.0.3",
-        "1.9-latest": "1.9-1.1.2",
+        "1.9-latest": "1.9-1.1.3",
         "1.8.9-latest": "1.8.9-1.1.0",
         "1.7.10-recommended": "1.0.3",
         "1.8.9-recommended": "1.8.9-1.1.0",
-        "1.9-recommended": "1.9-1.1.2"
+        "1.9-recommended": "1.9-1.1.3"
     },
     "1.8.9": {
         "1.8.9-1.1.0": "    * Add the \"Hestia's Hair Tie\" item.\n    * Update to 1.8.8 (asie, hea3ven).",
