@@ -43,7 +43,8 @@ public class ItemHairBand extends ItemArmor {
 							EnumDyeColor.YELLOW),
 					new TwinTailType(4, "cyan", new Potion[] {}, "dyeCyan", EnumDyeColor.CYAN),
 					new TwinTailType(5, "pink", new Potion[] {}, "dyePink", EnumDyeColor.PINK),
-					new TwinTailType(6, "black", new Potion[] {}, "dyeBlack", EnumDyeColor.BLACK)};
+					new TwinTailType(6, "black", new Potion[] {}, "dyeBlack", EnumDyeColor.BLACK),
+					new TwinTailType(7, "brown", new Potion[] {}, "dyeBrown", EnumDyeColor.BROWN)};
 
 	public ItemHairBand() {
 		super(hairBandArmorMaterial, 0, EntityEquipmentSlot.HEAD);
