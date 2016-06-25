@@ -10,7 +10,7 @@ import com.hea3ven.tools.bootstrap.Bootstrap;
 
 @Mod(modid = TwinTailsMod.MODID, version = TwinTailsMod.VERSION, dependencies = TwinTailsMod.DEPENDENCIES,
 		guiFactory = "com.hea3ven.twintails.ModGuiFactoryTwinTails",
-		updateJSON = "https://raw.githubusercontent.com/hea3ven/TwinTails/master/media/update.json")
+		updateJSON = "https://raw.githubusercontent.com/hea3ven/TwinTails/version/media/update.json")
 public class TwinTailsMod {
 
 	public static final String MODID = "twintails";

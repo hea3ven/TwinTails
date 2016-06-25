@@ -1,4 +1,8 @@
 // Hea3veN's build script for minecraft mods
+// v1.0.9 (2016-06-24):
+//     * Improve the sorting
+// v1.0.8 (2016-06-12):
+//     * Sort the entries in the update.json
 // v1.0.7 (2016-05-09):
 //     * Remove the code to update the README
 // v1.0.6 (2016-05-05):
@@ -217,22 +221,26 @@ class UpdateFile {
 	}
 
 	def save(File file) {
-		Map<String, Object> data = new HashMap()
+		def data = [:]
 		data.put('homepage', homepage)
+		promotions = promotions.sort { k1, k2 -> compareVersions(k1.key, k2.key) }
 		data.put('promos', promotions)
+		versions = versions.sort { k1, k2 -> compareVersions(k1.key, k2.key) }
 		versions.each { mcVersion, v ->
-			data[mcVersion] = new HashMap()
+			data[mcVersion] = [:]
 			data[mcVersion]['commit'] = commits[mcVersion]
 			v.each { version, changelog ->
 				data[mcVersion][version] = changelog.save()
 			}
+			data[mcVersion] = data[mcVersion].sort { k1, k2 -> compareVersions(k1.key, k2.key) }
 		}
+		data = data.sort { k1, k2 -> compareVersions(k1.key, k2.key) }
 		file.setText(new JsonBuilder(data).toPrettyString())
 	}
 
 	def saveChangelog(File file) {
 		def changelogText = ''
-		versions.sort { it.key }.collect { it.value }.reverseEach {
+		versions.sort { k1, k2 -> compareVersions(k1.key, k2.key) }.collect { it.value }.reverseEach {
 			def sortedChangelogs = [:]
 			it.sort {
 				it.key + ((!it.key.contains('-beta') && !it.key.contains('-alpha')) ? '-release' : '')
@@ -242,6 +250,32 @@ class UpdateFile {
 			}
 		}
 		file.setText(changelogText)
+	}
+
+	def compareVersions(String v1, String v2) {
+		String[] parts1 = v1.split(/[.-]/)
+		String[] parts2 = v2.split(/[.-]/)
+		def i = 0
+		while (parts1.length > i && parts2.length > i) {
+			if (parts1[i].isInteger() && parts2[i].isInteger()) {
+				def cmp = parts1[i] as int <=> parts2[i] as int
+				if (cmp != 0)
+					return cmp
+			} else {
+				if (i > 0 && parts1[i].isInteger())
+					return 1
+				else if (i > 0 && parts2[i].isInteger())
+					return -1
+				else
+					return parts1[i] <=> parts2[i]
+			}
+			i++
+		}
+		if (parts1.length > parts2.length)
+			return 1
+		if (parts1.length < parts2.length)
+			return -1
+		return 0
 	}
 }
 
